@@ -1,0 +1,5 @@
+.idea/
+.serverless/
+target/
+src/main/resources/whitelist.properties
+*.iml

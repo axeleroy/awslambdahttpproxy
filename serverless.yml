@@ -1,0 +1,19 @@
+service: http-proxy
+provider:
+  name: aws
+  runtime: java8
+  memorySize: 512
+  timeout: 120
+package:
+  artifact: target/aws-lambda-http-proxy-1.0-SNAPSHOT.jar
+functions:
+  configuration:
+    handler: sh.leroy.axel.aws.lambda.httpproxy.HttpProxyHandler
+    events:
+        - http:
+            method: any
+            path: /{url+}
+            request:
+              parameters:
+                querystrings:
+                  url: true
